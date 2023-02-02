@@ -34,7 +34,7 @@ const Home = () => {
     const getPosts = async () => {
       setLoading(true);
       try {
-        const posts = await axios.get("http://localhost:8080/api/v1/post");
+        const posts = await axios.get("https://dalleserver-q2ws.onrender.com/api/v1/post");
         setAllPost(posts.data.reverse());
       } catch (error) {
         console.log(error.message);

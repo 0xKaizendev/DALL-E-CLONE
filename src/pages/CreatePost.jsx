@@ -21,7 +21,8 @@ const CreatePost = () => {
       if(form.prompt && form.name && form.image){
         setLoading(true)
         try {
-         const request = await axios.post('http://localhost:8080/api/v1/post',{...form})
+          // https://dalleserver-q2ws.onrender.com/api/v1/post
+         const request = await axios.post('https://dalleserver-q2ws.onrender.com/api/v1/post',{...form})
          if(request.status===200){
           navigate('/')
          }
@@ -46,7 +47,7 @@ const CreatePost = () => {
     if (form.prompt ) {
       try {
         setGnerating(true);
-        const response = await axios.post( "http://localhost:8080/api/v1/dalle/generate",{ prompt: form.prompt })
+        const response = await axios.post( "https://dalleserver-q2ws.onrender.com/api/v1/dalle/generate",{ prompt: form.prompt })
         const data =   response.data
         setForm({...form,image:`data:image/jpeg;base64,${data.photo}`})
       } catch (error) {
