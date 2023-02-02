@@ -10,7 +10,7 @@ cloudConfig.config({
   api_secret: process.env.CLOUDYNARY_SECRET,
 });
 
-router.get("", async (req, res) => {
+router.get("/", async (req, res) => {
  try {
   const allPosts = await PostSchema.find();
   res.status(200).send(allPosts)

@@ -12,20 +12,20 @@ router.get("/", (req, res) => {
 });
 router.post("/generate", async (request, response) => {
   try {
-    const { prompt } = request.body;
+    // const { prompt } = request.body.prompt;
 
     const ai_response = await ai.createImage({
-      prompt,
+      prompt:request.body.prompt,
       n: 1,
-      size: "1024x1024",
+      size: "512x512",
       response_format: "b64_json",
     });
 
     const image = ai_response.data.data[0].b64_json;
     response.status(200).json({ photo: image });
   } catch (error) {
-    // response.status(500).send(error?.data.error.message);
-    response.status(404).send(error);
+
+    response.status(500).send(error);
   }
 });
 export default router;
